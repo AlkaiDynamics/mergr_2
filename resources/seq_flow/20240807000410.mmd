@@ -1,0 +1,19 @@
+
+sequenceDiagram
+    participant U as User
+    participant P as Profile
+    participant M as Match
+    participant MSG as Message
+    participant PRJ as Project
+    participant T as Task
+    U->>P: create_profile(username, email, password, skills, interests, bio)
+    P-->>U: return profile
+    U->>M: find_matches(user)
+    M-->>U: return matches
+    U->>MSG: send_message(sender, receiver, content)
+    MSG-->>U: return message
+    U->>PRJ: create_project(name, description, members)
+    PRJ-->>U: return project
+    U->>T: create_task(name, description, assigned_to, due_date, status)
+    T-->>PRJ: add task to project
+    PRJ-->>U: return updated project

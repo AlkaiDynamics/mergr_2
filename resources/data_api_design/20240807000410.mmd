@@ -1,0 +1,55 @@
+
+classDiagram
+    class User {
+        +id: int
+        +username: str
+        +email: str
+        +password: str
+        +profile: Profile
+        +__init__(self, username: str, email: str, password: str)
+    }
+    class Profile {
+        +id: int
+        +user: User
+        +skills: list[str]
+        +interests: list[str]
+        +bio: str
+        +__init__(self, user: User, skills: list[str], interests: list[str], bio: str)
+    }
+    class Match {
+        +id: int
+        +user1: User
+        +user2: User
+        +score: float
+        +__init__(self, user1: User, user2: User, score: float)
+    }
+    class Message {
+        +id: int
+        +sender: User
+        +receiver: User
+        +content: str
+        +timestamp: datetime
+        +__init__(self, sender: User, receiver: User, content: str, timestamp: datetime)
+    }
+    class Project {
+        +id: int
+        +name: str
+        +description: str
+        +members: list[User]
+        +tasks: list[Task]
+        +__init__(self, name: str, description: str, members: list[User])
+    }
+    class Task {
+        +id: int
+        +name: str
+        +description: str
+        +assigned_to: User
+        +due_date: datetime
+        +status: str
+        +__init__(self, name: str, description: str, assigned_to: User, due_date: datetime, status: str)
+    }
+    User --> Profile
+    User --> Match
+    User --> Message
+    User --> Project
+    Project --> Task
